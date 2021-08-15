@@ -90,56 +90,14 @@ let nombreGanador = document.getElementById("nombre-ganador")
 let totalFinal1;
 let totalFinal2;
 
-function desbloqueaAceptar () {
-    aceptarTiro.removeAttribute('disabled')
-}
 
-function bloqueaAceptar() {
-    aceptarTiro.disabled = true;
-}
+// **** funciones para tirada(); ****
 
-function chequeaExistencia () {
-    if (numeroRandom1 == 1 || numeroRandom2 == 1 || numeroRandom3 == 1 || numeroRandom4 == 1 || numeroRandom5 == 1) {
-        hay1 = true;
-    } else { 
-        hay1 = false;
-    }
-
-    if (numeroRandom1 == 2 || numeroRandom2 == 2 || numeroRandom3 == 2 || numeroRandom4 == 2 || numeroRandom5 == 2) {
-        hay2 = true;
-    } else { 
-        hay2 = false;
-    }
-
-    if (numeroRandom1 == 3 || numeroRandom2 == 3 || numeroRandom3 == 3 || numeroRandom4 == 3 || numeroRandom5 == 3) {
-        hay3 = true;
-    } else { 
-        hay3 = false;
-    }
-
-    if (numeroRandom1 == 4 || numeroRandom2 == 4 || numeroRandom3 == 4 || numeroRandom4 == 4 || numeroRandom5 == 4) {
-        hay4 = true;
-    } else { 
-        hay4 = false;
-    }
-
-    if (numeroRandom1 == 5 || numeroRandom2 == 5 || numeroRandom3 == 5 || numeroRandom4 == 5 || numeroRandom5 == 5) {
-        hay5 = true;
-    } else { 
-        hay5 = false;
-    }
-
-    if (numeroRandom1 == 6 || numeroRandom2 == 6 || numeroRandom3 == 6 || numeroRandom4 == 6 || numeroRandom5 == 6) {
-        hay6 = true;
-    } else { 
-        hay6 = false;
-    }
-}
-
-// funciones para tirada();
-function escondeDados () {
+function esconderDados () {
     contenedorDados.style = "display:none;"
 }
+
+        // modificación del botón "tirar dados!"
 
 function bloquearBotonTirada() {
     botonTirada.setAttribute('disabled', true)
@@ -149,15 +107,19 @@ function desbloquearBotonTirada() {
     botonTirada.removeAttribute('disabled')
 }
 
-function mostrarDados () {
-    dadoGirando.style = "display: none;"
-    contenedorDados.style = "display: flex; padding-top: 5%"
-}
+        // hace visible los dados
 
 function mostrarCargando() {    
     dadoGirando.style = "display: flex;"
     dadoGirando.src = "./img/cubilete.gif"
 }
+
+function mostrarDados () {
+    dadoGirando.style = "display: none;"
+    contenedorDados.style = "display: flex; padding-top: 5%"
+}
+
+        // muestra los dados según números generados aleatoriamente
 
 function tirarDados () {
 
@@ -274,6 +236,8 @@ function tirarDados () {
     console.log (dados)
 }
 
+        // modifica la visualización de los botones "aceptar tirada" y "volver a tirar"
+
 function mostrarBotones() {
     contenedorBotones.style = "display: flex; padding-top: 5%;"
 }
@@ -282,7 +246,9 @@ function esconderBotones() {
     contenedorBotones.style = "visibility: hidden"
 }
 
-function borraEstilos () {
+        // resetea la selección de dados
+
+function borrarEstilos () {
     dado1.classList.remove('dadoSeleccionado')
     dado2.classList.remove('dadoSeleccionado')
     dado3.classList.remove('dadoSeleccionado')
@@ -290,35 +256,17 @@ function borraEstilos () {
     dado5.classList.remove('dadoSeleccionado')
 }
 
-function desactivaBotones () {
-    boton1.disabled = true;
-    boton2.disabled = true;
-    boton3.disabled = true;
-    boton4.disabled = true;
-    boton5.disabled = true;
-    boton6.disabled = true;
-    botonEscalera.disabled = true;
-    botonFull.disabled = true;
-    botonPoker.disabled = true;
-    botonGenerala.disabled = true;
-    botonDoble.disabled = true;
+    // permiten o evitan que los dados puedan seleccionarse
+
+function bloquearDados() {
+    dado1.removeAttribute("onclick");
+    dado2.removeAttribute("onclick");
+    dado3.removeAttribute("onclick");
+    dado4.removeAttribute("onclick");
+    dado5.removeAttribute("onclick");
 }
 
-function activaBotones () {
-    boton1.disabled = false;
-    boton2.disabled = false;
-    boton3.disabled = false;
-    boton4.disabled = false;
-    boton5.disabled = false;
-    boton6.disabled = false;
-    botonEscalera.disabled = false;
-    botonFull.disabled = false;
-    botonPoker.disabled = false;
-    botonGenerala.disabled = false;
-    botonDoble.disabled = false;
-}
-
-function desbloqueaDados() {
+function desbloquearDados() {
     dado1.setAttribute("onclick", "cambiarDado1();");
     dado2.setAttribute("onclick", "cambiarDado2();");
     dado3.setAttribute("onclick", "cambiarDado3();");
@@ -326,7 +274,9 @@ function desbloqueaDados() {
     dado5.setAttribute("onclick", "cambiarDado5();");
 }
 
-function borraPrevio() {
+        // cambia los valores de las existencias de los dados a FALSE para que cada jugada sea independiente
+
+function borrarPrevio() {
     hay1 = false
     hay2 = false
     hay3 = false
@@ -340,7 +290,9 @@ function borraPrevio() {
     hayDoble = false 
 }
 
-function reseteaBotones () {
+        // cambia el estilo de los botones para que cada jugada sea independiente
+
+function resetearBotones () {
     if (boton1.classList.contains("btn-success") == true) {
         boton1.classList.replace("btn-success", "btn-danger")
     }
@@ -387,18 +339,20 @@ function reseteaBotones () {
     
 }
 
+        // *** TIRADA**** se activa al presionar "Tirar Dados!" y agrupa las funciones previas, además de setear un Timeout 
+        // para la aparición de los dados y los botones "Volver a tirar" y "Aceptar tirada",
+        // aumenta el valor de Z, que determina el turno actual
+
 function tirada() {
         borraPrevio()
-        reseteaBotones()
-        desbloqueaAceptar()
-        desbloqueaDados() 
+        resetearBotones()
+        // desbloquearAceptar()
+        desbloquearDados() 
         esconderBotones()
-        activaBotones();
-        // desactivaBotones();
         contenedorJugada.classList.add('esconder')
         botonRepite.removeAttribute('disabled')
-        borraEstilos();
-        escondeDados();
+        borrarEstilos();
+        esconderDados();
         mostrarCargando();
         tirarDados();
         esperaCarga = setTimeout(mostrarDados, 1300);
@@ -409,7 +363,9 @@ function tirada() {
         y = 0
         fueModificado = false;
 }
-   
+
+// avisa, según el turno actual, quién juega o si la partida finalizó.
+
 function cambiarNombreJugador() {
     if (z < 23 && z % 2 !== 0) {
         nombreJugador.textContent = "Turno del jugador 1"
@@ -472,19 +428,15 @@ function cambiarDado5 () {
     }  
 }
 
-function bloqueaDados() {
-    dado1.removeAttribute("onclick");
-    dado2.removeAttribute("onclick");
-    dado3.removeAttribute("onclick");
-    dado4.removeAttribute("onclick");
-    dado5.removeAttribute("onclick");
-}
+// setea la visibilidad del grupo de botones que imprimen el puntaje
 
 function esconderJugada() {
     botonesJugada.style = "display: none;"
 }
 
-function muestraAnimacionDado() {
+// muestra la carga del dado que desea cambiarse. luego, cambia el dado y su valor
+
+function mostrarAnimacionDado() {
     if (dado1.classList.contains("dadoSeleccionado") == true){
         dado1.src = "img/cargaDado.gif"
     }
@@ -505,10 +457,12 @@ function muestraAnimacionDado() {
         dado5.src = "img/cargaDado.gif"
     }
     
-    esperaCargaDado = setTimeout(repiteTiro, 1000)
+    esperaCargaDado = setTimeout(repetirTiro, 1000)
 }
 
-function loopeaSiUnselected () {
+// estas dos funciones forman parte de repetirTiro() --> impide el avance si no hay dados seleccionados y deshabilita según la cantidad de veces que ya se tiró
+
+function loopearSiUnselected () {
     if (dado1.classList.contains("dadoSeleccionado") == false && dado2.classList.contains("dadoSeleccionado") == false &&
         dado3.classList.contains("dadoSeleccionado") == false && dado4.classList.contains("dadoSeleccionado") == false &&
         dado5.classList.contains("dadoSeleccionado") == false) {
@@ -516,16 +470,58 @@ function loopeaSiUnselected () {
     }
 }
 
-function limitaTiros() {
+function limitarTiros() {
     if (y == 1) {
         botonRepite.setAttribute('disabled', true)
     }
 }
 
-function repiteTiro () {
+// permite saber si determinado número salió en la tirada
 
-    loopeaSiUnselected();
-    limitaTiros();
+function chequearExistencia () {
+    if (numeroRandom1 == 1 || numeroRandom2 == 1 || numeroRandom3 == 1 || numeroRandom4 == 1 || numeroRandom5 == 1) {
+        hay1 = true;
+    } else { 
+        hay1 = false;
+    }
+
+    if (numeroRandom1 == 2 || numeroRandom2 == 2 || numeroRandom3 == 2 || numeroRandom4 == 2 || numeroRandom5 == 2) {
+        hay2 = true;
+    } else { 
+        hay2 = false;
+    }
+
+    if (numeroRandom1 == 3 || numeroRandom2 == 3 || numeroRandom3 == 3 || numeroRandom4 == 3 || numeroRandom5 == 3) {
+        hay3 = true;
+    } else { 
+        hay3 = false;
+    }
+
+    if (numeroRandom1 == 4 || numeroRandom2 == 4 || numeroRandom3 == 4 || numeroRandom4 == 4 || numeroRandom5 == 4) {
+        hay4 = true;
+    } else { 
+        hay4 = false;
+    }
+
+    if (numeroRandom1 == 5 || numeroRandom2 == 5 || numeroRandom3 == 5 || numeroRandom4 == 5 || numeroRandom5 == 5) {
+        hay5 = true;
+    } else { 
+        hay5 = false;
+    }
+
+    if (numeroRandom1 == 6 || numeroRandom2 == 6 || numeroRandom3 == 6 || numeroRandom4 == 6 || numeroRandom5 == 6) {
+        hay6 = true;
+    } else { 
+        hay6 = false;
+    }
+}
+
+// esta función permite cambiar los dados seleccionados
+
+function repetirTiro () {
+
+    loopearSiUnselected();
+    limitarTiros();
     
     if (dado1.classList.contains("dadoSeleccionado") == true) {
         
@@ -633,12 +629,14 @@ function repiteTiro () {
     
     dados = [numeroRandom1, numeroRandom2, numeroRandom3, numeroRandom4, numeroRandom5]
     dados.sort();
-    chequeaExistencia ();
+    chequearExistencia ();
     console.log(dados);
-    borraEstilos ();
+    borrarEstilos ();
     fueModificado = true;
 
 }
+
+// deshabilitar los botones según la existencia de dados o de jugadas posibles
 
 function deshabilitarJugadasRealizadas () {
     if (z % 2 == 0) {
@@ -737,7 +735,9 @@ function deshabilitarJugadasRealizadas () {
 
 }
 
-function eleccionDados() {
+// esta función habilita los botones para imprimir jugadas según la existencia de dados o de jugadas posibles
+
+function habilitarJugadas() {
     if (hay1 == true) {
         boton1.removeAttribute("disabled")
         boton1.classList.replace("btn-danger", "btn-success")
@@ -897,13 +897,17 @@ function eleccionDados() {
     }
 }
 
+// con esta función se aceptan los dados de la tirada y se pasa a la eleccion de jugada
+
 function aceptaTirada () {
-    eleccionDados()     
+    habilitarJugadas()     
     contenedorJugada.classList.remove('esconder')
     botonesJugada.style = "display: inline-block; padding-top: 5%"
-    bloqueaDados();
+    bloquearDados();
     deshabilitarJugadasRealizadas();
 }
+
+//suma los resultados de las jugadas de cada jugador
 
 function sumaTotalJug1 () {
 
@@ -922,14 +926,19 @@ function sumaTotalJug2() {
 }
 
 
+// function bloquearAceptar() {
+//     aceptarTiro.disabled = true;
+// }
+
+
+// funcion utilizada al finalizar cada impresión de puntaje
 
 function finTurno () {
-    desactivaBotones()
-    bloqueaAceptar()
+    // bloquearAceptar()
     cambiarNombreJugador()
     // sumaTotal()
     esconderJugada()
-    escondeDados()
+    esconderDados()
     esconderBotones()
 
     if (z <= 22) {
@@ -957,6 +966,8 @@ function finTurno () {
 
     
 }
+
+//estas funciones imprimen el puntaje correspondiente en la tabla de puntajes
 
 function puntajeUno() {
 
