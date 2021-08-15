@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Generala</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/a19919b1e0.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!--    
+        
+        -tiene que mostrarse el nombre del jugador y el mensaje que avise su turno
+
+        -tiene que haber una tabla de puntajes para llevar rastro de los resultados
+        
+        lanzamiento:
+        -tiene que haber un botón para lanzar
+        -*animación de dados - GIF + aparición de dados de la tirada DE A UNO*
+
+        en simultáneo después del lanzamiento:
+            -imágenes se hacen clickeables
+            -seleccionar dados para tirar de nuevo (cambiar el IMG por uno de dado tachado)
+            -botón para tirar de nuevo 
+                -texto "2 restantes, 1 restante"
+                -volverlo disabled cuando se tire 2 veces
+                -volverlo disabled si no hay dados seleccionados (esto evitaría apretarlo por accidente, creo) (originalmente tiene q verse disabled)
+
+        luego del lanzamiento:
+            -mostrar el resultado de los dados
+            -mostrar las opciones de Categorias según el resultado de los dados
+            -finalmente, según la elección:
+                -tachar la Categoria en la tabla ó
+                -anotar el puntaje de la Categoria en la tabla
+
+        -cada turno será constituído por las 3 previas secciones
+        -luego de 22 tiros (11 cada uno), se sumarán los puntos según la tabla de puntajes, gana el de mayor puntaje
+        -mostrar un mensaje que muestre al ganador
+
+ -->
+    
+    <!-- tabla de puntajes -->
+    <div class="row">
+        <div class="col-sm-4">
+            <div id="tablas" class="container-fluid puntajes">
+                
+                <div class="container col-xs-12 col-sm-8 col-md-6">
+                    <h4 id="casilla-nombre1" class="casilla-jugador text-center">Jugador 1</h4>     
+
+                    <table class="table table-bordered">
+
+                        <thead>
+                            <tr>
+                            <th class="text-center header-puntos">Categoria</th>
+                            <th class="text-center header-puntos">Punt.</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                            <td><i class="fas fa-dice-one"></i></td>
+                            <td class="text-center" id="jug1-puntaje-1"></td>
+                            </tr>
+
+                            <tr>
+                            <td><i class="fas fa-dice-two"></i></td>
+                            <td class="text-center" id="jug1-puntaje-2"></td>
+                            </tr>
+
+                            <tr>
+                            <td><i class="fas fa-dice-three"></i></td>
+                            <td class="text-center" id="jug1-puntaje-3"></td>
+                            </tr>
+
+                            <tr>
+                            <td><i class="fas fa-dice-four"></i></td>
+                            <td class="text-center" id="jug1-puntaje-4"></td>
+                            </tr>
+
+                            <tr>
+                            <td><i class="fas fa-dice-five"></i></td>
+                            <td class="text-center" id="jug1-puntaje-5"></td>
+                            </tr>
+
+                            <tr>
+                            <td><i class="fas fa-dice-six"></i></td>
+                            <td class="text-center" id="jug1-puntaje-6"></td>
+                            </tr>
+
+                            <tr>
+                            <td>Escalera</td>
+                            <td class="text-center" id="jug1-puntaje-escalera"></td>
+                            </tr>
+
+                            <tr>
+                            <td>Full</td>
+                            <td class="text-center" id="jug1-puntaje-full"></td>
+                            </tr>
+
+                            <tr>
+                            <td>Poker</td>
+                            <td class="text-center" id="jug1-puntaje-poker"></td>
+                            </tr>
+
+                            <tr>
+                            <td>Generala</td>
+                            <td class="text-center" id="jug1-puntaje-generala"></td>
+                            </tr>
+
+                            <tr>
+                            <td>Generala Doble</td>
+                            <td class="text-center" id="jug1-puntaje-generala-doble"></td>
+                            </tr>
+
+                            <tr>
+                            <td class="header-puntos"><strong>Total</strong></td>
+                            <td class="text-center" id="jug1-puntaje-total"></td>
+                            </tr>
+
+                        </tbody>
+                    </table>   
+                </div>
+
+                <div class="container col-xs-12 col-md-6">
+                    <h4 id="casilla-nombre1" class="casilla-jugador text-center">Jugador 2</h4>         
+
+                    <table class="table table-bordered">
+
+                        <thead>
+                            <tr>
+                            <th class="text-center header-puntos">Categoria</th>
+                            <th class="text-center header-puntos">Punt.</th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+                            <tr>
+                            <td><i class="fas fa-dice-one"></i></td>
+                            <td class="text-center" id="jug2-puntaje-1"></td>
+                            </tr>
+
+                            <tr>
+                            <td><i class="fas fa-dice-two"></i></td>
+                            <td class="text-center" id="jug2-puntaje-2"></td>
+                            </tr>
+
+                            <tr>
+                            <td><i class="fas fa-dice-three"></i></td>
+                            <td class="text-center" id="jug2-puntaje-3"></td>
+                            </tr>
+
+                            <tr>
+                            <td><i class="fas fa-dice-four"></i></td>
+                            <td class="text-center" id="jug2-puntaje-4"></td>
+                            </tr>
+
+                            <tr>
+                            <td><i class="fas fa-dice-five"></i></td>
+                            <td class="text-center" id="jug2-puntaje-5"></td>
+                            </tr>
+
+                            <tr>
+                            <td><i class="fas fa-dice-six"></i></td>
+                            <td class="text-center" id="jug2-puntaje-6"></td>
+                            </tr>
+
+                            <tr>
+                            <td>Escalera</td>
+                            <td class="text-center" id="jug2-puntaje-escalera"></td>
+                            </tr>
+
+                            <tr>
+                            <td>Full</td>
+                            <td class="text-center" id="jug2-puntaje-full"></td>
+                            </tr>
+
+                            <tr>
+                            <td>Poker</td>
+                            <td class="text-center" id="jug2-puntaje-poker"></td>
+                            </tr>
+
+                            <tr>
+                            <td>Generala</td>
+                            <td class="text-center" id="jug2-puntaje-generala"></td>
+                            </tr>
+
+                            <tr>
+                            <td>Generala Doble</td>
+                            <td class="text-center" id="jug2-puntaje-generala-doble"></td>
+                            </tr>
+
+                            <tr>
+                            <td class="header-puntos"><strong>Total</strong></td>
+                            <td class="text-center " id="jug2-puntaje-total"></td>
+                            </tr>
+
+                        </tbody>
+                    </table>   
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-8">
+            <div class="panel panel-default cont-mensaje-turno">
+                <h2 id="mensaje-turno" class="text-center">Turno del jugador 1</h2>
+            </div>
+
+            <button type="button" id="boton-dados" onclick="tirada()" class="center-block btn btn-primary btn-lg">Tirar Dados!</button>
+            
+            <img id="imagen-dado-carga" class="center-block img-responsive" style = "display: flex;">
+
+            <div id="contenedor-ganador" class="text-center container-fluid center-block" style="display: none;">
+                <div class="jumbotron text-center"><h1 class="ganador">Gana el <span id="nombre-ganador">jugador 1!</span></h1></div>
+                <button id="boton-nueva-partida" class="center-block btn btn-primary btn-lg" onclick="location.reload()">Nueva Partida</button>
+            </div>
+
+            <div class="center-block container-fluid" id="contenedor-dados" style="display:none;">
+                <div>
+                    <img class="imagen-dado" id="dado-1" tabindex="1" onclick="cambiarDado1()">
+                </div>
+
+                <div>
+                    <img class="imagen-dado" id="dado-2" tabindex="1" onclick="cambiarDado2()">
+                </div>
+
+                <div>
+                    <img class="imagen-dado" id="dado-3" tabindex="1" onclick="cambiarDado3()">
+                </div>
+
+                <div>
+                    <img class="imagen-dado" id="dado-4" tabindex="1" onclick="cambiarDado4()">
+                </div>
+                    
+                <div>
+                    <img class="imagen-dado" id="dado-5" tabindex="1" onclick="cambiarDado5()">
+                </div>
+            </div>
+                
+            <div id="contenedor-botones" style="display: none;">
+                <button id="vuelve-a-tirar" class="center-block btn btn-primary btn-lg" type="button" onclick="muestraAnimacionDado()">Volver a tirar!</button>
+                <button id="acepta-tirada" class="center-block btn btn-primary btn-lg" type="button" onclick="aceptaTirada()">Aceptar tirada</button>
+            </div>
+
+
+            <div id="botones-jugada-container" class="esconder text-center center-block col-xs-12">
+                <div id="botones-jugada" class="btn-group">
+                    <button id="boton-jugada-1" type="button" class="botonJugada btn btn-danger" onclick="puntajeUno()">1</button>
+                    <button id="boton-jugada-2" type="button" class="botonJugada btn btn-danger" onclick="puntajeDos()">2</button>
+                    <button id="boton-jugada-3" type="button" class="botonJugada btn btn-danger" onclick="puntajeTres()">3</button>
+                    <button id="boton-jugada-4" type="button" class="botonJugada btn btn-danger" onclick="puntajeCuatro()">4</button>
+                    <button id="boton-jugada-5" type="button" class="botonJugada btn btn-danger" onclick="puntajeCinco()">5</button>
+                    <button id="boton-jugada-6" type="button" class="botonJugada btn btn-danger" onclick="puntajeSeis()">6</button>
+                    <button id="boton-jugada-escalera" type="button" class="botonJugada btn btn-danger" onclick="puntajeEscalera()">Escalera</button>
+                    <button id="boton-jugada-full" type="button" class="botonJugada btn btn-danger" onclick="puntajeFull()">Full</button>
+                    <button id="boton-jugada-poker" type="button" class="botonJugada btn btn-danger" onclick="puntajePoker()">Poker</button>
+                    <button id="boton-jugada-generala" type="button" class="botonJugada btn btn-danger" onclick="puntajeGenerala()">Generala</button>
+                    <button id="boton-jugada-doble" type="button" class="botonJugada btn btn-danger" onclick="puntajeDoble()">Generala Doble</button>
+                  </div>
+            </div>
+
+            <!-- <div id="contenedor-boton-fin" style="display: none;">
+                <button id="termina-turno" class="center-block btn btn-primary btn-lg" type="button" onclick="terminarTurno()">Terminar turno</button>
+            </div> -->
+            
+
+        </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

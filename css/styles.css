@@ -1,0 +1,91 @@
+/* td {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+} */
+
+
+@font-face {
+    font-family: "Pixelar";
+    src: url("../fonts/Pixelar/Pixelar.ttf")
+}
+
+body {
+    max-width: 98%;
+    background-color: rgb(9, 88, 9);
+    font-family: "Pixelar";
+    font-size: 250%;
+    /* letter-spacing: 1px;
+    line-height: 1px; */
+    color: white
+}
+
+.header-puntos {
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.casilla-jugador {
+    font-size: 120%
+}
+
+#boton-dados {
+    background-color: tomato;
+}
+
+#boton-dados:hover  {
+    background-color: rgb(196, 63, 40);
+}
+
+.puntajes {
+    font-size: 100%;
+    color: white;
+    text-align: center;
+}
+
+h2 {
+    margin-top: 10px
+}
+
+.panel {
+    margin-top: 20px;
+    margin-right: 20px;
+    background-color: rgb(9, 88, 9);
+    
+
+}
+
+.jumbotron {
+    background-color: rgb(9, 88, 9);
+    padding-top: 70px;
+}
+
+.imagen-dado {
+    padding: 2px;
+}
+
+#imagen-dado-carga {
+    size: 140%;
+}
+
+#dado-1, #dado-2, #dado-3, #dado-4, #dado-5 {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.dadoSeleccionado {
+    border: 1px solid red;
+}
+
+.btn {
+    font-size: 100%;
+}
+
+#contenedor-dados {
+    /* display: flex; */
+    flex-direction: row;
+    /* justify-content: flex-start; */
+    max-width: 50%;
+}
+
+.esconder {
+    visibility: hidden;
+}
