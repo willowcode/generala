@@ -344,7 +344,7 @@ function resetearBotones () {
         // aumenta el valor de Z, que determina el turno actual
 
 function tirada() {
-        borraPrevio()
+        borrarPrevio()
         resetearBotones()
         // desbloquearAceptar()
         desbloquearDados() 
