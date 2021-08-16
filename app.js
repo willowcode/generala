@@ -356,6 +356,10 @@ function esconderAJugar() {
     mensajeTire.classList.replace("mensajeTire", 'mensajeTireNo')
 }
 
+function mostrarAJugar() {
+    mensajeTire.classList.replace('mensajeTireNo', "mensajeTire")
+}
+
         // *** TIRADA**** se activa al presionar "Tirar Dados!" y agrupa las funciones previas, además de setear un Timeout 
         // para la aparición de los dados y los botones "Volver a tirar" y "Aceptar tirada",
         // aumenta el valor de Z, que determina el turno actual
@@ -977,13 +981,16 @@ function bloquearAceptar() {
 
 function finTurno () {
     mensajeInstruccion.classList.add("esconder")
-    mensajeTire.classList.replace('mensajeTireNo', 'mensajeTire')
     cambiarNombreJugador()
     // sumaTotal()
     esconderJugada()
     esconderDados()
     esconderBotones()
 
+
+    if (z <= 22) {
+        mostrarAJugar()
+    }
 
     if (z <= 22) {
         desbloquearBotonTirada()
@@ -1002,10 +1009,13 @@ function finTurno () {
 
     if (z == 23 && totalFinal1 > totalFinal2) {
         contenedorGanador.style = "display: inline;"
-        nombreGanador.textContent = "jugador 1!"
+        nombreGanador.textContent = "Gana el jugador 1!"
     } else if (z == 23 && totalFinal1 < totalFinal2) {
         contenedorGanador.style = "display: inline;"
-        nombreGanador.textContent = "jugador 2!"
+        nombreGanador.textContent = "Gana el jugador 2!"
+    } else if (z == 23 && totalFinal1 == totalFinal2) {
+        contenedorGanador.style = "display: inline;"
+        nombreGanador.textContent = "Empate! A Jugar de nuevo!"
     }
 
     
