@@ -19,6 +19,7 @@ let imagenDado5 = "./img/dado-5.png"
 let imagenDado6 = "./img/dado-6.png"
 
 let mensajeInstruccion = document.getElementById("mensaje-volver-a-tirar")
+let mensajeTire = document.getElementById("mensaje-tire")
 
 let imagenDados = document.getElementsByClassName("imagen-dado");
 let bordeDado = "border: 2px solid red"
@@ -99,6 +100,11 @@ let totalFinal2;
 function esconderDados () {
     contenedorDados.style = "display:none;"
 }
+
+function desbloquearAceptar() {
+    aceptarTiro.removeAttribute("disabled");
+}
+
 
         // modificación del botón "tirar dados!"
 
@@ -342,8 +348,12 @@ function resetearBotones () {
     
 }
 
-function mostrarMensaje () {
+function mostrarMensajeInst () {
     mensajeInstruccion.classList.remove("esconder")
+}
+
+function esconderAJugar() {
+    mensajeTire.classList.replace("mensajeTire", 'mensajeTireNo')
 }
 
         // *** TIRADA**** se activa al presionar "Tirar Dados!" y agrupa las funciones previas, además de setear un Timeout 
@@ -353,7 +363,7 @@ function mostrarMensaje () {
 function tirada() {
         borrarPrevio()
         resetearBotones()
-        // desbloquearAceptar()
+        desbloquearAceptar()
         desbloquearDados() 
         esconderBotones()
         contenedorJugada.classList.add('esconder')
@@ -362,14 +372,19 @@ function tirada() {
         esconderDados();
         mostrarCargando();
         tirarDados();
+        esconderAJugar()
         esperaCarga = setTimeout(mostrarDados, 1300);
         esperaCarga = setTimeout(mostrarBotones, 1300); 
-        esperaCarga = setTimeout(mostrarMensaje, 1300);
-        bloquearBotonTirada();  
+        esperaCarga = setTimeout(mostrarMensajeInst, 1300);
+        bloquearBotonTirada(); 
         z += 1
         console.log(z)
         y = 0
         fueModificado = false;
+        
+
+        botonRepite.textContent = "Volver a tirar! (2 restantes)"
+
 
 }
 
@@ -466,24 +481,34 @@ function mostrarAnimacionDado() {
         dado5.src = "img/cargaDado.gif"
     }
 
-    if (dado1.classList.contains("dadoSeleccionado") == false && dado2.classList.contains("dadoSeleccionado") == false &&
+    if (y == 0 && dado1.classList.contains("dadoSeleccionado") == false && dado2.classList.contains("dadoSeleccionado") == false &&
         dado3.classList.contains("dadoSeleccionado") == false && dado4.classList.contains("dadoSeleccionado") == false &&
         dado5.classList.contains("dadoSeleccionado") == false) {
         alert("Por favor, seleccione los dados que desea volver a tirar.")
-        y = 0
+        y = y;
+    } else if (y == 0 && (dado1.classList.contains("dadoSeleccionado") || true && dado2.classList.contains("dadoSeleccionado") == true ||
+    dado3.classList.contains("dadoSeleccionado") == true || dado4.classList.contains("dadoSeleccionado") == true ||
+    dado5.classList.contains("dadoSeleccionado") == true)) {
+        botonRepite.textContent = "Volver a tirar! (1 restante)"
+        esperaCargaDado = setTimeout(repetirTiro, 1000)
+    } else if (y == 1 && (dado1.classList.contains("dadoSeleccionado") == true || dado2.classList.contains("dadoSeleccionado") == true ||
+    dado3.classList.contains("dadoSeleccionado") == true || dado4.classList.contains("dadoSeleccionado") == true ||
+    dado5.classList.contains("dadoSeleccionado") == true)) {
+        botonRepite.textContent = "No puede volver a tirar"
+        esperaCargaDado = setTimeout(repetirTiro, 1000)
     }
+
     
-    esperaCargaDado = setTimeout(repetirTiro, 1000)
 }
 
 // estas dos funciones forman parte de repetirTiro() --> impide el avance si no hay dados seleccionados y deshabilita según la cantidad de veces que ya se tiró
 
 function loopearSiUnselected () {
-    if (dado1.classList.contains("dadoSeleccionado") == false && dado2.classList.contains("dadoSeleccionado") == false &&
+        if (dado1.classList.contains("dadoSeleccionado") == false && dado2.classList.contains("dadoSeleccionado") == false &&
         dado3.classList.contains("dadoSeleccionado") == false && dado4.classList.contains("dadoSeleccionado") == false &&
         dado5.classList.contains("dadoSeleccionado") == false) {
-        y = 0
-    }
+            y = 0;
+        }   
 }
 
 function limitarTiros() {
@@ -537,6 +562,7 @@ function chequearExistencia () {
 function repetirTiro () {
 
     loopearSiUnselected();
+
     limitarTiros();
     
     if (dado1.classList.contains("dadoSeleccionado") == true) {
@@ -641,7 +667,6 @@ function repetirTiro () {
     }
     
     y += 1
-    console.log(y)
     
     dados = [numeroRandom1, numeroRandom2, numeroRandom3, numeroRandom4, numeroRandom5]
     dados.sort();
@@ -921,6 +946,7 @@ function aceptarTirada () {
     botonesJugada.style = "display: inline-block; padding-top: 5%"
     bloquearDados();
     deshabilitarJugadasRealizadas();
+    bloquearAceptar()
 }
 
 //suma los resultados de las jugadas de cada jugador
@@ -942,20 +968,22 @@ function sumaTotalJug2() {
 }
 
 
-// function bloquearAceptar() {
-//     aceptarTiro.disabled = true;
-// }
+function bloquearAceptar() {
+    aceptarTiro.disabled = true;
+}
 
 
 // funcion utilizada al finalizar cada impresión de puntaje
 
 function finTurno () {
-    // bloquearAceptar()
+    mensajeInstruccion.classList.add("esconder")
+    mensajeTire.classList.replace('mensajeTireNo', 'mensajeTire')
     cambiarNombreJugador()
     // sumaTotal()
     esconderJugada()
     esconderDados()
     esconderBotones()
+
 
     if (z <= 22) {
         desbloquearBotonTirada()
