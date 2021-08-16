@@ -18,6 +18,8 @@ let imagenDado4 = "./img/dado-4.png"
 let imagenDado5 = "./img/dado-5.png"
 let imagenDado6 = "./img/dado-6.png"
 
+let mensajeInstruccion = document.getElementById("mensaje-volver-a-tirar")
+
 let imagenDados = document.getElementsByClassName("imagen-dado");
 let bordeDado = "border: 2px solid red"
 
@@ -89,6 +91,7 @@ let contenedorGanador = document.getElementById("contenedor-ganador")
 let nombreGanador = document.getElementById("nombre-ganador")
 let totalFinal1;
 let totalFinal2;
+
 
 
 // **** funciones para tirada(); ****
@@ -339,6 +342,10 @@ function resetearBotones () {
     
 }
 
+function mostrarMensaje () {
+    mensajeInstruccion.classList.remove("esconder")
+}
+
         // *** TIRADA**** se activa al presionar "Tirar Dados!" y agrupa las funciones previas, además de setear un Timeout 
         // para la aparición de los dados y los botones "Volver a tirar" y "Aceptar tirada",
         // aumenta el valor de Z, que determina el turno actual
@@ -356,12 +363,14 @@ function tirada() {
         mostrarCargando();
         tirarDados();
         esperaCarga = setTimeout(mostrarDados, 1300);
-        esperaCarga = setTimeout(mostrarBotones, 1000); 
+        esperaCarga = setTimeout(mostrarBotones, 1300); 
+        esperaCarga = setTimeout(mostrarMensaje, 1300);
         bloquearBotonTirada();  
         z += 1
         console.log(z)
         y = 0
         fueModificado = false;
+
 }
 
 // avisa, según el turno actual, quién juega o si la partida finalizó.
@@ -455,6 +464,13 @@ function mostrarAnimacionDado() {
     
     if(dado5.classList.contains("dadoSeleccionado") == true) {
         dado5.src = "img/cargaDado.gif"
+    }
+
+    if (dado1.classList.contains("dadoSeleccionado") == false && dado2.classList.contains("dadoSeleccionado") == false &&
+        dado3.classList.contains("dadoSeleccionado") == false && dado4.classList.contains("dadoSeleccionado") == false &&
+        dado5.classList.contains("dadoSeleccionado") == false) {
+        alert("Por favor, seleccione los dados que desea volver a tirar.")
+        y = 0
     }
     
     esperaCargaDado = setTimeout(repetirTiro, 1000)
@@ -899,7 +915,7 @@ function habilitarJugadas() {
 
 // con esta función se aceptan los dados de la tirada y se pasa a la eleccion de jugada
 
-function aceptaTirada () {
+function aceptarTirada () {
     habilitarJugadas()     
     contenedorJugada.classList.remove('esconder')
     botonesJugada.style = "display: inline-block; padding-top: 5%"
