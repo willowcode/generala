@@ -62,6 +62,11 @@ h2 {
 .jumbotron {
     background-color: rgb(9, 88, 9);
     padding-top: 70px;
+    
+}
+
+.ganador {
+    font-size: 730%;
 }
 
 .imagen-dado {
