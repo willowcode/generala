@@ -204,6 +204,7 @@
                     </table>   
                 </div>
             </div>
+
         </div>
 
         <div class="col-sm-8">
@@ -240,11 +241,21 @@
                 <div>
                     <img class="imagen-dado" id="dado-5" tabindex="1" onclick="cambiarDado5()">
                 </div>
-            </div>
                 
+            </div>
+
+            <div id="mensaje-volver-a-tirar" class="text-center esconder">
+                <p> Seleccione los dados que desea volver a tirar, o termine su turno si está satisfecho con los dados actuales.
+                    <br>
+                    <span style="font-size: smaller;">(Nota: si termina su turno, NO PODRÁ volver a modificar sus dados.)</span>
+                </p>
+            </div>
+
+            <!-- -->
+            
             <div id="contenedor-botones" style="display: none;">
                 <button id="vuelve-a-tirar" class="center-block btn btn-primary btn-lg" type="button" onclick="mostrarAnimacionDado()">Volver a tirar!</button>
-                <button id="acepta-tirada" class="center-block btn btn-primary btn-lg" type="button" onclick="aceptarTirada()">Aceptar tirada</button>
+                <button id="acepta-tirada" class="center-block btn btn-primary btn-lg" type="button" onclick="aceptarTirada()">Terminar turno</button>
             </div>
 
 
@@ -264,11 +275,40 @@
                   </div>
             </div>
 
-            <!-- <div id="contenedor-boton-fin" style="display: none;">
-                <button id="termina-turno" class="center-block btn btn-primary btn-lg" type="button" onclick="terminarTurno()">Terminar turno</button>
-            </div> -->
-            
+            <div class="container">
+                <button type="button" class="center-block btn btn-primary" data-toggle="collapse" data-target="#demo">Reglas e Instrucciones</button>
+                <div id="demo" class="collapse">
+                    -La generala consiste en once turnos por jugador. Quien logre la mayor cantidad de puntos al final de la partida, será el ganador.
+                    <br>
+                    <br>
+                    -En cada turno, los jugadores podrán tirar hasta TRES veces. 
+                    <br>
+                    -En cada tirada, los jugadores podrán seleccionar los dados que desean CAMBIAR.
+                    <br>
+                    -Para calcular el puntaje de una CATEGORÍA, se multiplica el número de la misma por la cantidad de dados en los que aparece.
+                    <br>
+                    EJEMPLO: Si el número 6 aparece en cuatro dados, el puntaje de la categoría es 24.
+                    <br>
+                    <br>
+                    Las JUGADAS MAYORES (Escalera, Full, Poker, Generala, Generala Doble):
+                    <br>
+                    <br>
+                    *Nota: Si la jugada se realiza en un solo tiro, se dice que es SERVIDA. Si lleva más de un tiro, es ARMADA.*
+                    <br>
+                    <br>    
+                    -ESCALERA: números del 1 al 5 (1-2-3-4-5) o del 2 al 6 (2-3-4-5-6). Si es SERVIDA, son 25 puntos. Si es ARMADA, son 20 puntos.
+                    <br>
+                    -FULL: tres números iguales y un par. Ejemplo: 3-3-3-2-2. Si es SERVIDA, son 35 puntos. Si es ARMADA, son 30 puntos.
+                    <br>
+                    -POKER: cuatro números iguales. Ejemplo: 3-3-3-3-2. Si es SERVIDA, son 45 puntos. Si es ARMADA, son 40 puntos.
+                    <br>
+                    -GENERALA: cinco números iguales. Ejemplo: 3-3-3-3-3. Si es SERVIDA, GANA EL PARTIDO. Si es ARMADA, son 50 puntos.
+                    <br>
+                    -GENERALA DOBLE: consiste en sacar GENERALA dos veces en el mismo partido. Son 100 puntos.
 
+                </div>
+              </div>
+            
         </div>
     
     <script src="app.js"></script>
