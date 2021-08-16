@@ -41,6 +41,10 @@ body {
     text-align: center;
 }
 
+#botones-jugada-container {
+    padding-bottom: 50px;
+}
+
 h2 {
     margin-top: 10px
 }
@@ -49,8 +53,10 @@ h2 {
     margin-top: 20px;
     margin-right: 20px;
     background-color: rgb(9, 88, 9);
-    
+}
 
+.instrucciones {
+    padding-top: 160px;
 }
 
 .jumbotron {
@@ -84,6 +90,15 @@ h2 {
     flex-direction: row;
     /* justify-content: flex-start; */
     max-width: 50%;
+}
+
+.mensajeTire {
+    font-size: 430%;
+    display: block;
+}
+
+.mensajeTireNo {
+    display: none;
 }
 
 .esconder {
