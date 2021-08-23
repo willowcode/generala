@@ -345,6 +345,51 @@ function resetearBotones () {
     if (botonGenerala.classList.contains("btn-success") == true) {
         botonGenerala.classList.replace("btn-success", "btn-danger");
     }
+
+    if (boton1.disabled == true) {
+        boton1.removeAttribute("disabled")
+    }
+
+    if (boton2.disabled == true) {
+        boton2.removeAttribute("disabled")
+    }
+    
+    if (boton3.disabled == true) {
+        boton3.removeAttribute("disabled")
+    }
+
+    if (boton4.disabled == true) {
+        boton4.removeAttribute("disabled")
+    }
+    
+    if (boton5.disabled == true) {
+        boton5.removeAttribute("disabled")
+    }
+    
+    if (boton6.disabled == true) {
+        boton6.removeAttribute("disabled")
+    }
+    
+    if (botonEscalera.disabled == true) {
+        botonEscalera.removeAttribute("disabled")
+    }
+    
+    if (botonFull.disabled == true) {
+        botonFull.removeAttribute("disabled")
+    }
+    
+    if (botonPoker.disabled == true) {
+        botonPoker.removeAttribute("disabled")
+    }
+    
+    if (botonGenerala.disabled == true) {
+        botonGenerala.removeAttribute("disabled")
+    }
+    
+    if (botonDoble.disabled == true) {
+        botonDoble.removeAttribute("disabled")
+    }
+    
     
 }
 
@@ -681,106 +726,7 @@ function repetirTiro () {
 
 }
 
-// deshabilitar los botones según la existencia de dados o de jugadas posibles
-
-function deshabilitarJugadasRealizadas () {
-    if (z % 2 == 0) {
-
-        if (jug1Puntaje1.textContent !== "") {
-            boton1.setAttribute("disabled", true);
-        }
-    
-        if (jug1Puntaje2.textContent !== "") {
-            boton2.setAttribute("disabled", true);
-        }
-    
-        if (jug1Puntaje3.textContent !== "") {
-            boton3.setAttribute("disabled", true);
-        }
-    
-        if (jug1Puntaje4.textContent !== "") {
-            boton4.setAttribute("disabled", true);
-        }
-    
-        if (jug1Puntaje5.textContent !== "") {
-            boton5.setAttribute("disabled", true);
-        }
-    
-        if (jug1Puntaje6.textContent !== "") {
-            boton6.setAttribute("disabled", true);
-        }
-    
-        if (jug1PuntajeEsc.textContent !== "") {
-            botonEscalera.setAttribute("disabled", true);
-        }
-    
-        if (jug1PuntajeFul.textContent !== "") {
-            botonFull.setAttribute("disabled", true);
-        }
-    
-        if (jug1PuntajePok.textContent !== "") {
-            botonPoker.setAttribute("disabled", true);
-        }
-    
-        if (jug1PuntajeGen.textContent !== "") {
-            botonGenerala.setAttribute("disabled", true);
-        }
-    
-        if (jug1PuntajeDob.textContent !== "") {
-            botonDoble.setAttribute("disabled", true);
-        }
-    
-    }
-    
-    if (z % 2 !== 0) {
-        if (jug2Puntaje1.textContent !== "") {
-            boton1.setAttribute("disabled", true);
-        }
-    
-        if (jug2Puntaje2.textContent !== "") {
-            boton2.setAttribute("disabled", true);
-        }
-    
-        if (jug2Puntaje3.textContent !== "") {
-            boton3.setAttribute("disabled", true);
-        }
-    
-        if (jug2Puntaje4.textContent !== "") {
-            boton4.setAttribute("disabled", true);
-        }
-    
-        if (jug2Puntaje5.textContent !== "") {
-            boton5.setAttribute("disabled", true);
-        }
-    
-        if (jug2Puntaje6.textContent !== "") {
-            boton6.setAttribute("disabled", true);
-        }
-    
-        if (jug2PuntajeEsc.textContent !== "") {
-            botonEscalera.setAttribute("disabled", true);
-        }
-    
-        if (jug2PuntajeFul.textContent !== "") {
-            botonFull.setAttribute("disabled", true);
-        }
-    
-        if (jug2PuntajePok.textContent !== "") {
-            botonPoker.setAttribute("disabled", true);
-        }
-    
-        if (jug2PuntajeGen.textContent !== "") {
-            botonGenerala.setAttribute("disabled", true);
-        }
-    
-        if (jug2PuntajeDob.textContent !== "") {
-            botonDoble.setAttribute("disabled", true);
-        }
-    }
-
-}
-
-// esta función habilita los botones para imprimir jugadas según la existencia de dados o de jugadas posibles
+// habilitar los botones según la existencia de dados o de jugadas posibles
 
 function habilitarJugadas() {
     if (hay1 == true) {
@@ -789,27 +735,22 @@ function habilitarJugadas() {
     }
 
     if (hay2 == true) {
-        boton2.removeAttribute("disabled");
         boton2.classList.replace("btn-danger", "btn-success");
     }
 
     if (hay3 == true) {
-        boton3.removeAttribute("disabled");
         boton3.classList.replace("btn-danger", "btn-success");
     }
 
     if (hay4 == true) {
-        boton4.removeAttribute("disabled");
         boton4.classList.replace("btn-danger", "btn-success");
     }
 
     if (hay5 == true) {
-        boton5.removeAttribute("disabled");
         boton5.classList.replace("btn-danger", "btn-success");
     }
 
     if (hay6 == true) {
-        boton6.removeAttribute("disabled");
         boton6.classList.replace("btn-danger", "btn-success");
     }   
 
@@ -824,29 +765,25 @@ function habilitarJugadas() {
 
     //full
     if (dados[0] == 1 && dados[1] == 1 && dados[2] == 1 && dados[3] == dados[4]) {
-        
-        botonFull.removeAttribute('disabled');
+
         hayFull = true;
         botonFull.classList.replace("btn-danger", "btn-success");
 
     } else if ((dados[0] == 2 && dados[1] == 2 && dados[2] == 2 && dados[3] == dados[4]) || 
                (dados[0] == dados[1] && dados[2] == 2 && dados[3] == 2 && dados[4] == 2)) {
 
-        botonFull.removeAttribute('disabled');
         hayFull = true;
         botonFull.classList.replace("btn-danger", "btn-success");
 
     } else if ((dados[0] == 3 && dados[1] == 3 && dados[2] == 3 && dados[3] == dados[4]) ||
                (dados[0] == dados[1] && dados[2] == 3 && dados[3] == 3 && dados[4] == 3)) {
 
-        botonFull.removeAttribute('disabled');
         hayFull = true;
         botonFull.classList.replace("btn-danger", "btn-success");
 
     } else if ((dados[0] == 4 && dados[1] == 4 && dados[2] == 4 && dados[3] == dados[4]) ||
                (dados[0] == dados[1] && dados[2] == 4 && dados[3] == 4 && dados[4] == 4)) {
 
-        botonFull.removeAttribute('disabled');
         hayFull = true;
         botonFull.classList.replace("btn-danger", "btn-success");
 
@@ -854,14 +791,11 @@ function habilitarJugadas() {
     } else if ((dados[0] == 5 && dados[1] == 5 && dados[2] == 5 && dados[3] == dados[4]) ||
                (dados[0] == dados[1] && dados[2] == 5 && dados[3] == 5 && dados[4] == 5)) {
 
-        botonFull.removeAttribute('disabled');
         hayFull = true;
         botonFull.classList.replace("btn-danger", "btn-success");
     
     } else if ((dados[0] == 6 && dados[1] == 6 && dados[2] == 6 && dados[3] == dados[4]) || 
                (dados[0] == dados[1] && dados[2] == 6 && dados[3] == 6 && dados[4] == 6)) {
-
-        botonFull.removeAttribute('disabled');
         hayFull = true;
         botonFull.classList.replace("btn-danger", "btn-success");
     } 
@@ -869,78 +803,222 @@ function habilitarJugadas() {
 
     // poker
     if (dados[0] == 1 && dados[1] == 1 && dados[2] == 1 && dados[3] == 1 && dados[4] !== 1) {
-        botonPoker.removeAttribute('disabled');
         botonPoker.classList.replace("btn-danger", "btn-success");
         hayPoker = true;
     } else if (dados[0] == 2 && dados[1] == 2 && dados[2] == 2 && dados[3] == 2 && dados[4] !== 2) {
-        botonPoker.removeAttribute('disabled');
         botonPoker.classList.replace("btn-danger", "btn-success");
         hayPoker = true;
     } else if (dados[0] !== 2 && dados[1] == 2 && dados[2] == 2 && dados[3] == 2 && dados[4] == 2) {
-        botonPoker.removeAttribute('disabled');
         botonPoker.classList.replace("btn-danger", "btn-success");
         hayPoker = true;
     } else if (dados[0] == 3 && dados[1] == 3 && dados[2] == 3 && dados[3] == 3 && dados[4] !== 3) {
-        botonPoker.removeAttribute('disabled');
         botonPoker.classList.replace("btn-danger", "btn-success");
         hayPoker = true;
     } else if (dados[0] !== 3 && dados[1] == 3 && dados[2] == 3 && dados[3] == 3 && dados[4] == 3) {
-        botonPoker.removeAttribute('disabled');
         botonPoker.classList.replace("btn-danger", "btn-success");
         hayPoker = true;
     } else if (dados[0] == 4 && dados[1] == 4 && dados[2] == 4 && dados[3] == 4 && dados[4] !== 4) {
-        botonPoker.removeAttribute('disabled');
         botonPoker.classList.replace("btn-danger", "btn-success");
         hayPoker = true;
     } else if (dados[0] !== 4 && dados[1] == 4 && dados[2] == 4 && dados[3] == 4 && dados[4] == 4) {
-        botonPoker.removeAttribute('disabled');
         botonPoker.classList.replace("btn-danger", "btn-success");
         hayPoker = true;
     } else if (dados[0] == 5 && dados[1] == 5 && dados[2] == 5 && dados[3] == 5 && dados[4] !== 5) {
-        botonPoker.removeAttribute('disabled');
         botonPoker.classList.replace("btn-danger", "btn-success");
         hayPoker = true;
     } else if (dados[0] !== 5 && dados[1] == 5 && dados[2] == 5 && dados[3] == 5 && dados[4] == 5) {
-        botonPoker.removeAttribute('disabled');
         botonPoker.classList.replace("btn-danger", "btn-success");
         hayPoker = true;
     } else if (dados[0] == 6 && dados[1] == 6 && dados[2] == 6 && dados[3] == 6 && dados[4] !== 6) {
-        botonPoker.removeAttribute('disabled');
         botonPoker.classList.replace("btn-danger", "btn-success");
         hayPoker = true;
     } else if (dados[0] !== 6 && dados[1] == 6 && dados[2] == 6 && dados[3] == 6 && dados[4] == 6) {
-        botonPoker.removeAttribute('disabled');
         botonPoker.classList.replace("btn-danger", "btn-success");
         hayPoker = true;
     } 
 
     // generala 
     if (hay1 == true && hay2 == false && hay3 == false && hay4 == false && hay5 == false && hay6 == false) {
-            botonGenerala.removeAttribute("disabled");
             botonGenerala.classList.replace("btn-danger", "btn-success");
             hayGenerala = true;
     } else if (hay1 == false && hay2 == true && hay3 == false && hay4 == false && hay5 == false && hay6 == false) {
-            botonGenerala.removeAttribute("disabled");
             botonGenerala.classList.replace("btn-danger", "btn-success");
             hayGenerala = true;
     } else if (hay1 == false && hay2 == false && hay3 == true && hay4 == false && hay5 == false && hay6 == false) {
-            botonGenerala.removeAttribute("disabled");
             botonGenerala.classList.replace("btn-danger", "btn-success");
             hayGenerala = true;
     } else if (hay1 == false && hay2 == false && hay3 == false && hay4 == true && hay5 == false && hay6 == false) {
-            botonGenerala.removeAttribute("disabled");
             botonGenerala.classList.replace("btn-danger", "btn-success");
             hayGenerala = true;
     } else if (hay1 == false && hay2 == false && hay3 == false && hay4 == false && hay5 == true && hay6 == false) {
-            botonGenerala.removeAttribute("disabled");
             botonGenerala.classList.replace("btn-danger", "btn-success");
             hayGenerala = true;
     } else if (hay1 == false && hay2 == false && hay3 == false && hay4 == false && hay5 == false && hay6 == true) {
-            botonGenerala.removeAttribute("disabled");
             botonGenerala.classList.replace("btn-danger", "btn-success");
             hayGenerala = true;
     }
+
+
 }
+
+function deshabilitarJugadasRealizadasJug1 () {
+
+
+    if (z % 2 == 0 && (jug1Puntaje1.textContent == "1" || jug1Puntaje1.textContent == "2" || jug1Puntaje1.textContent == "3" ||
+                jug1Puntaje1.textContent == "4" || jug1Puntaje1.textContent == "5" || jug1Puntaje1.textContent == "0")) {
+
+                boton1.setAttribute("disabled", true)
+
+    } 
+        
+    if (z % 2 == 0 && (jug1Puntaje2.textContent == "2" || jug1Puntaje2.textContent == "4" || jug1Puntaje2.textContent == "6" ||
+                    jug1Puntaje2.textContent == "8" || jug1Puntaje2.textContent == "10" || jug1Puntaje2.textContent == "0" )) {
+
+            boton2.setAttribute("disabled", true)
+
+        } 
+        
+    if (z % 2 == 0 && (jug1Puntaje3.textContent == "3" || jug1Puntaje3.textContent == "6" || jug1Puntaje3.textContent == "9" ||
+                    jug1Puntaje3.textContent == "12" || jug1Puntaje3.textContent == "15" || jug1Puntaje3.textContent == "0")) {
+
+            boton3.setAttribute("disabled", true)
+
+        } 
+
+    if (z % 2 == 0 && (jug1Puntaje4.textContent == "4" || jug1Puntaje4.textContent == "8" || jug1Puntaje4.textContent == "12" ||
+                    jug1Puntaje4.textContent == "16" || jug1Puntaje4.textContent == "20" || jug1Puntaje4.textContent == "0")) {
+
+            boton4.setAttribute("disabled", true)
+
+        } 
+        
+    if (z % 2 == 0 && (jug1Puntaje5.textContent == "5" || jug1Puntaje5.textContent == "10" || jug1Puntaje5.textContent == "15" ||
+                    jug1Puntaje5.textContent == "20" || jug1Puntaje5.textContent == "25" || jug1Puntaje5.textContent == "0")) {
+
+            boton5.setAttribute("disabled", true)
+
+        } 
+        
+    if (z % 2 == 0 && (jug1Puntaje6.textContent == "6" || jug1Puntaje6.textContent == "12" || jug1Puntaje6.textContent == "18" ||
+                    jug1Puntaje6.textContent == "24" || jug1Puntaje6.textContent == "30" || jug1Puntaje6.textContent == "0")) {
+
+            boton6.setAttribute("disabled", true)
+
+        }
+        
+    if (z % 2 == 0 && (jug1PuntajeEsc.textContent == "20" || jug1PuntajeEsc.textContent == "25" || jug1PuntajeEsc.textContent == "0")) {
+
+            botonEscalera.setAttribute("disabled", true)
+
+        } 
+        
+    if (z % 2 == 0 && (jug1PuntajeFul.textContent == "30" || jug1PuntajeFul.textContent == "35" || jug1PuntajeFul.textContent == "0")) {
+            
+            botonFull.setAttribute("disabled", true)
+
+        } 
+        
+    if (z % 2 == 0 && (jug1PuntajePok.textContent == "40" || jug1PuntajePok.textContent == "45" || jug1PuntajePok.textContent == "0")) {
+           
+            botonPoker.setAttribute("disabled", true)
+
+        } 
+        
+    if (z % 2 == 0 && (jug1PuntajeGen.textContent == "50" || jug1PuntajeGen.textContent == "0")) {
+         
+            botonGenerala.setAttribute("disabled", true)
+
+        } 
+        
+    if (z % 2 == 0 && (jug1PuntajeDob.textContent == "100" || jug1PuntajeDob.textContent == "0")) {
+           
+            botonDoble.setAttribute("disabled", true)
+
+        }
+    
+}
+    
+
+function deshabilitarJugadasRealizadasJug2 () {
+
+        
+    if (z % 2 !== 0 && (jug2Puntaje1.textContent == "1" || jug2Puntaje1.textContent == "2" || jug2Puntaje1.textContent == "3" ||
+                jug2Puntaje1.textContent == "4" || jug2Puntaje1.textContent == "5" || jug2Puntaje1.textContent == "0")) {
+
+                boton1.setAttribute("disabled", true)
+
+        } 
+        
+    if (z % 2 !== 0 && (jug2Puntaje2.textContent == "2" || jug2Puntaje2.textContent == "4" || jug2Puntaje2.textContent == "6" ||
+                    jug2Puntaje2.textContent == "8" || jug2Puntaje2.textContent == "10" || jug2Puntaje2.textContent == "0")) {
+
+            boton2.setAttribute("disabled", true)
+
+        } 
+        
+    if (z % 2 !== 0 && (jug2Puntaje3.textContent == "3" || jug2Puntaje3.textContent == "6" || jug2Puntaje3.textContent == "9" ||
+                    jug2Puntaje3.textContent == "12" || jug2Puntaje3.textContent == "15" || jug2Puntaje3.textContent == "0")) {
+
+            boton3.setAttribute("disabled", true)
+
+        } 
+        
+    if (z % 2 !== 0 && (jug2Puntaje4.textContent == "4" || jug2Puntaje4.textContent == "8" || jug2Puntaje4.textContent == "12" ||
+                    jug2Puntaje4.textContent == "16" || jug2Puntaje4.textContent == "20" || jug2Puntaje4.textContent == "0")) {
+
+            boton4.setAttribute("disabled", true)
+
+        } 
+        
+    if (z % 2 !== 0 && (jug2Puntaje5.textContent == "5" || jug2Puntaje5.textContent == "10" || jug2Puntaje5.textContent == "15" ||
+                    jug2Puntaje5.textContent == "20" || jug2Puntaje5.textContent == "25" || jug2Puntaje5.textContent == "0")) {
+
+            boton5.setAttribute("disabled", true)
+
+        } 
+        
+    if (z % 2 !== 0 && (jug2Puntaje6.textContent == "6" || jug2Puntaje6.textContent == "12" || jug2Puntaje6.textContent == "18" ||
+                    jug2Puntaje6.textContent == "24" || jug2Puntaje6.textContent == "30" || jug2Puntaje6.textContent == "0")) {
+
+            boton6.setAttribute("disabled", true)
+
+        } 
+        
+    if (z % 2 !== 0 && (jug2PuntajeEsc.textContent == "20" || jug2PuntajeEsc.textContent == "25" || jug2PuntajeEsc.textContent == "0")) {
+
+            botonEscalera.setAttribute("disabled", true)
+
+        } 
+        
+    if (z % 2 !== 0 && (jug2PuntajeFul.textContent == "30" || jug2PuntajeFul.textContent == "35" || jug2PuntajeFul.textContent == "0")) {
+            
+            botonFull.setAttribute("disabled", true)
+
+        } 
+        
+    if (z % 2 !== 0 && (jug2PuntajePok.textContent == "40" || jug2PuntajePok.textContent == "45" || jug2PuntajePok.textContent == "0")) {
+           
+            botonPoker.setAttribute("disabled", true)
+
+        } 
+        
+    if (z % 2 !== 0 && (jug2PuntajeGen.textContent == "50" || jug2PuntajeGen.textContent == "0")) {
+         
+            botonGenerala.setAttribute("disabled", true)
+
+        } 
+        
+    if (z % 2 !== 0 && (jug2PuntajeDob.textContent == "100" || jug2PuntajeDob.textContent == "0")) {
+           
+            botonDoble.setAttribute("disabled", true)
+            
+        }
+
+    
+}
+
+// esta función habilita los botones para imprimir jugadas según la existencia de dados o de jugadas posibles
+
 
 // con esta función se aceptan los dados de la tirada y se pasa a la eleccion de jugada
 
@@ -949,7 +1027,8 @@ function aceptarTirada () {
     contenedorJugada.classList.remove('esconder');
     botonesJugada.style = "display: inline-block; padding-top: 5%";
     bloquearDados();
-    deshabilitarJugadasRealizadas();
+    deshabilitarJugadasRealizadasJug1();
+    deshabilitarJugadasRealizadasJug2();
     bloquearAceptar();
 }
 
@@ -977,10 +1056,10 @@ function bloquearAceptar() {
 
 // funcion utilizada al finalizar cada impresión de puntaje
 
+
 function finTurno () {
     mensajeInstruccion.classList.add("esconder");
     cambiarNombreJugador();
-    // sumaTotal()
     esconderJugada();
     esconderDados();
     esconderBotones();
@@ -1168,17 +1247,19 @@ function puntajeEscalera() {
     
     if (hayEscalera == true && z % 2 == 0 && fueModificado == false) {
         jug1PuntajeEsc.textContent = 25;
-    } else if (hayEscalera == true && z % 2 !== 0 && fueModificado == false) {
-        jug2PuntajeEsc.textContent = 25;
     } else if (hayEscalera == true && z % 2 == 0) {
         jug1PuntajeEsc.textContent = 20;
-    } else if (hayEscalera == true && z % 2 !== 0) {
-        jug2PuntajeEsc.textContent = 20;
     } else if (hayEscalera == false && z % 2 == 0) {
         jug1PuntajeEsc.textContent = 0;
+    }  
+
+    if (hayEscalera == true && z % 2 !== 0 && fueModificado == false) {
+        jug2PuntajeEsc.textContent = 25;
+    } else if (hayEscalera == true && z % 2 !== 0) {
+        jug2PuntajeEsc.textContent = 20;
     } else if (hayEscalera == false && z % 2 !== 0) {
         jug2PuntajeEsc.textContent = 0;
-    }  
+    } 
 
     finTurno ();
 
@@ -1189,17 +1270,19 @@ function puntajeFull() {
     
     if (hayFull == true && z % 2 == 0 && fueModificado == false) {
         jug1PuntajeFul.textContent = 35;
-    } else if (hayFull== true && z % 2 !== 0 && fueModificado == false) {
-        jug2PuntajeFul.textContent = 35;
     } else if (hayFull == true && z % 2 == 0) {
         jug1PuntajeFul.textContent = 30;
-    } else if (hayFull == true && z % 2 !== 0) {
-        jug2PuntajeFul.textContent = 30;
     } else if (hayFull == false && z % 2 == 0) {
         jug1PuntajeFul.textContent = 0;
+    }   
+
+    if (hayFull== true && z % 2 !== 0 && fueModificado == false) {
+        jug2PuntajeFul.textContent = 35;
+    } else if (hayFull == true && z % 2 !== 0) {
+        jug2PuntajeFul.textContent = 30;
     } else if (hayFull == false && z % 2 !== 0) {
         jug2PuntajeFul.textContent = 0;
-    }  
+    }
 
     finTurno ();
 
@@ -1208,17 +1291,19 @@ function puntajeFull() {
 
 function puntajePoker() {
     
-    if (hayPoker== true && z % 2 == 0 && fueModificado == false) {
+    if (hayPoker == true && z % 2 == 0 && fueModificado == false) {
         jug1PuntajePok.textContent = 45;
-    } else if (hayPoker == true && z % 2 !== 0 && fueModificado == false) {
-        jug2PuntajePok.textContent = 45;
     } else if (hayPoker == true && z % 2 == 0) {
         jug1PuntajePok.textContent = 40;
-    } else if (hayPoker == true && z % 2 !== 0) {
-        jug2PuntajePok.textContent = 40;
     } else if (hayPoker == false && z % 2 == 0) {
         jug1PuntajePok.textContent = 0;
-    } else if (hayPoker == false && z % 2 !== 0) {
+    }
+    
+    if (hayPoker == true && z % 2 !== 0 && fueModificado == false) {
+        jug2PuntajePok.textContent = 45;
+    }  else if (hayPoker == true && z % 2 !== 0) {
+        jug2PuntajePok.textContent = 40;
+    }  else if (hayPoker == false && z % 2 !== 0) {
         jug2PuntajePok.textContent = 0;
     } 
     
@@ -1232,18 +1317,21 @@ function puntajeGenerala() {
     if (hayGenerala == true && z % 2 == 0 && fueModificado == false) {
         contenedorGanador.style = "display: inline;";
         nombreGanador.textContent = "jugador 1!";
-    } else if (hayGenerala == true && z % 2 !== 0 && fueModificado == false) {
-        contenedorGanador.style = "display: inline;";
-        nombreGanador.textContent = "jugador 2!";
     } else if (hayGenerala == true && z % 2 == 0) {
         jug1PuntajeGen.textContent = 50;
-    } else if (hayGenerala == true && z % 2 !== 0) {
-        jug2PuntajeGen.textContent = 50;
     } else if (hayGenerala == false && z % 2 == 0) {
         jug1PuntajeGen.textContent = 0;
+    }
+
+    if (hayGenerala == true && z % 2 !== 0 && fueModificado == false) {
+        contenedorGanador.style = "display: inline;";
+        nombreGanador.textContent = "jugador 2!";
+    } else if (hayGenerala == true && z % 2 !== 0) {
+        jug2PuntajeGen.textContent = 50;
     } else if (hayGenerala == false && z % 2 !== 0) {
         jug2PuntajeGen.textContent = 0;
     } 
+
     finTurno ();
   
 
@@ -1253,11 +1341,13 @@ function puntajeDoble() {
     
     if (hayGenerala == true && z % 2 == 0 && guardaPuntajeGen.textContent == 50) {
         jug1PuntajeDob.textContent = 100;
-    } else if (hayGenerala == true && z % 2 !== 0 && guardaPuntajeGen.textContent == 50) {
-        jug2PuntajeDob.textContent = 100;
     } else if (hayGenerala == false && z % 2 == 0) {
         jug1PuntajeDob.textContent = 0;
-    } else if (hayGenerala == false && z % 2 !== 0) {
+    }
+    
+    if (hayGenerala == true && z % 2 !== 0 && guardaPuntajeGen.textContent == 50) {
+        jug2PuntajeDob.textContent = 100;
+    }  else if (hayGenerala == false && z % 2 !== 0) {
         jug2PuntajeDob.textContent = 0;
     } 
 
@@ -1267,4 +1357,72 @@ function puntajeDoble() {
 
 
 
+// function deshabilitarJugadasRealizadas () {
 
+//     if (z % 2 == 0) {
+
+//         if (jug1Puntaje1.textContent == "1" || jug1Puntaje1.textContent == "2" || jug1Puntaje1.textContent == "3" ||
+//             jug1Puntaje1.textContent == "4" || jug1Puntaje1.textContent == "5") {
+//             boton1.setAttribute("disabled", true)
+//         } else if (jug1Puntaje2.textContent == "2" || jug1Puntaje2.textContent == "4" || jug1Puntaje2.textContent == "6" ||
+//                     jug1Puntaje2.textContent == "8" || jug1Puntaje2.textContent == "10") {
+//             boton2.setAttribute("disabled", true)
+//         } else if (jug1Puntaje3.textContent == "3" || jug1Puntaje3.textContent == "6" || jug1Puntaje3.textContent == "9" ||
+//                     jug1Puntaje3.textContent == "12" || jug1Puntaje3.textContent == "15") {
+//             boton3.setAttribute("disabled", true)
+//         } else if (jug1Puntaje4.textContent == "4" || jug1Puntaje4.textContent == "8" || jug1Puntaje4.textContent == "12" ||
+//                     jug1Puntaje4.textContent == "16" || jug1Puntaje4.textContent == "20") {
+//             boton4.setAttribute("disabled", true)
+//         } else if (jug1Puntaje5.textContent == "5" || jug1Puntaje5.textContent == "10" || jug1Puntaje5.textContent == "15" ||
+//                     jug1Puntaje5.textContent == "20" || jug1Puntaje5.textContent == "25") {
+//             boton5.setAttribute("disabled", true)
+//         } else if (jug1Puntaje6.textContent == "6" || jug1Puntaje6.textContent == "12" || jug1Puntaje6.textContent == "18" ||
+//                     jug1Puntaje6.textContent == "24" || jug1Puntaje6.textContent == "30") {
+//             boton6.setAttribute("disabled", true)
+//         } else if (jug1PuntajeEsc.textContent == "20" || jug1PuntajeEsc.textContent == "25" || jug1PuntajeEsc.textContent == "0") {
+//             botonEscalera.setAttribute("disabled", true)
+//         } else if (jug1PuntajeFul.textContent == "30" || jug1PuntajeFul.textContent == "35" || jug1PuntajeFul.textContent == "0") {
+//             botonFull.setAttribute("disabled", true)
+//         } else if (jug1PuntajePok.textContent == "40" || jug1PuntajePok.textContent == "45" || jug1PuntajePok.textContent == "0") {
+//             botonPoker.setAttribute("disabled", true)
+//         } else if (jug1PuntajeGen.textContent == "50" || jug1PuntajeGen.textContent == "0") {
+//             botonGenerala.setAttribute("disabled", true)
+//         } else if (jug1PuntajeDob.textContent == "100" || jug1PuntajeDob.textContent == "0" ) {
+//             botonDoble.setAttribute("disabled", true)
+//         }
+    
+//     }
+    
+//     if (z % 2 !== 0) {
+
+//         if (jug2Puntaje1.textContent == "1" || jug2Puntaje1.textContent == "2" || jug2Puntaje1.textContent == "3" ||
+//             jug2Puntaje1.textContent == "4" || jug2Puntaje1.textContent == "5") {
+//             boton1.setAttribute("disabled", true)
+//         } else if (jug2Puntaje2.textContent == "2" || jug2Puntaje2.textContent == "4" || jug2Puntaje2.textContent == "6" ||
+//                     jug2Puntaje2.textContent == "8" || jug2Puntaje2.textContent == "10") {
+//             boton2.setAttribute("disabled", true)
+//         } else if (jug2Puntaje3.textContent == "3" || jug2Puntaje3.textContent == "6" || jug2Puntaje3.textContent == "9" ||
+//                     jug2Puntaje3.textContent == "12" || jug2Puntaje3.textContent == "15") {
+//             boton3.setAttribute("disabled", true)
+//         } else if (jug2Puntaje4.textContent == "4" || jug2Puntaje4.textContent == "8" || jug2Puntaje4.textContent == "12" ||
+//                     jug2Puntaje4.textContent == "16" || jug2Puntaje4.textContent == "20") {
+//             boton4.setAttribute("disabled", true)
+//         } else if (jug2Puntaje5.textContent == "5" || jug2Puntaje5.textContent == "10" || jug2Puntaje5.textContent == "15" ||
+//                     jug2Puntaje5.textContent == "20" || jug2Puntaje5.textContent == "25") {
+//             boton5.setAttribute("disabled", true)
+//         } else if (jug2Puntaje6.textContent == "6" || jug2Puntaje6.textContent == "12" || jug2Puntaje6.textContent == "18" ||
+//                     jug2Puntaje6.textContent == "24" || jug2Puntaje6.textContent == "30") {
+//             boton6.setAttribute("disabled", true)
+//         } else if (jug2PuntajeEsc.textContent == "20" || jug2PuntajeEsc.textContent == "25" || jug2PuntajeEsc.textContent == "0") {
+//             botonEscalera.setAttribute("disabled", true)
+//         } else if (jug2PuntajeFul.textContent == "30" || jug2PuntajeFul.textContent == "35" || jug2PuntajeFul.textContent == "0") {
+//             botonFull.setAttribute("disabled", true)
+//         } else if (jug2PuntajePok.textContent == "40" || jug2PuntajePok.textContent == "45" || jug2PuntajePok.textContent == "0") {
+//             botonPoker.setAttribute("disabled", true)
+//         } else if (jug2PuntajeGen.textContent == "50" || jug2PuntajeGen.textContent == "0") {
+//             botonGenerala.setAttribute("disabled", true)
+//         } else if (jug2PuntajeDob.textContent == "100" || jug2PuntajeDob.textContent == "0" ) {
+//             botonDoble.setAttribute("disabled", true)
+//         }
+//     }
+// }
